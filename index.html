@@ -142,6 +142,19 @@
 
         // Calcular al hacer clic en el botón
         document.getElementById('calcularBtn').addEventListener('click', function() {
+            calcularMonto();
+        });
+
+        // Calcular al presionar Enter
+        document.getElementById('monto').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Evitar el envío del formulario
+                calcularMonto();
+            }
+        });
+
+        // Función para calcular el monto
+        function calcularMonto() {
             const selectValue = document.getElementById('deposito').value;
             const montoInput = document.getElementById('monto');
             const montoIngresado = parseFloat(montoInput.value);
@@ -168,7 +181,7 @@
             } else {
                 alert('Por favor, selecciona un depósito e ingresa un monto válido.');
             }
-        });
+        }
     </script>
 </body>
 </html>
